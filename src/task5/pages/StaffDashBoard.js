@@ -35,8 +35,8 @@ export default function StaffDashBoard() {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [error , setError] = useState('')
     const [leaveData, setLeaveData] = useState(JSON.parse(localStorage.getItem('leaveData') || '[]'))
-    const [editLeave, setEditLeave] = useState(null)
 
     const navigate = useNavigate()
 
@@ -45,6 +45,16 @@ export default function StaffDashBoard() {
         to: '',
         reason: ''
     })
+
+
+    useEffect(() =>{
+        if(data.to < data.from){
+            setError('*Enter Proper Date')
+        }else{
+            setError("")
+        }
+    },[ data.to])
+    
 
     const signin = JSON.parse(localStorage.getItem('signin'))
 
@@ -62,13 +72,19 @@ export default function StaffDashBoard() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setLeaveData([...leaveData, data])
+        if(!error){
+            setLeaveData([...leaveData, data])
         localStorage.setItem('leaveData', JSON.stringify([...leaveData, data]))
         setData({
             from: '',
             to: '',
             reason: ''
         })
+        }else{
+            alert(error)
+        }
+        
+        
     }
 
     const leaveDetails = JSON.parse(localStorage.getItem('leaveData')) || [];
@@ -161,6 +177,7 @@ export default function StaffDashBoard() {
                                 <FormControl>
                                     <Typography>To</Typography>
                                     <TextField type='date' size='small' name='to' onChange={handleChange} value={data.to} />
+                                    <Typography color={'red'}>{error }</Typography>
                                 </FormControl>
 
                                 <FormControl fullWidth sx={{ my: 3 }}>
