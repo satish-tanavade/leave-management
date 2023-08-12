@@ -46,7 +46,7 @@ function Login() {
           flexDirection={'column'}
           gap={'20px'} width={'400px'}
           padding={'20px'}
-          sx={{ mx: 'auto', }}
+          sx={{ margin: '80px auto' }}
           borderRadius={'20px'}
         >
           <Typography textAlign={'center'} variant='h4' color={'primary'} >Login Form</Typography>
