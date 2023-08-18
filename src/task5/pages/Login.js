@@ -17,21 +17,19 @@ function Login() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    const isSign = users.find(user => user.email === input.email && user.password === input.password)
+    const isSign = users.find(user => user.username === input.username && user.password === input.password)
 
     if (isSign) {
-      alert('SignIn Successful')
-      console.log('SignIn Successful');
       localStorage.setItem('signin', JSON.stringify(isSign))
       navigate(`/dashboard/${isSign.role}`)
       setInput({
-        email: '',
+        username: '',
         password: ''
       })
     } else {
       alert('Invalid credential')
       setInput({
-        email: '',
+        username: '',
         password: ''
       })
     }
@@ -48,10 +46,11 @@ function Login() {
           padding={'20px'}
           sx={{ margin: '80px auto' }}
           borderRadius={'20px'}
+          boxShadow={'1px 1px 5px'}
         >
           <Typography textAlign={'center'} variant='h4' color={'primary'} >Login Form</Typography>
-          <TextField name='email' onChange={handleChange} value={input.email} placeholder='Enter email'></TextField>
-          <TextField name='password' onChange={handleChange} value={input.password} placeholder='Enter password'></TextField>
+          <TextField name='username' onChange={handleChange} value={input.username} placeholder='Enter username' required></TextField>
+          <TextField name='password' onChange={handleChange} value={input.password} placeholder='Enter password' required></TextField>
           <Button type='submit' variant='contained'>Login</Button>
           <Button onClick={() => navigate('/register')}>Register</Button>
         </Box>

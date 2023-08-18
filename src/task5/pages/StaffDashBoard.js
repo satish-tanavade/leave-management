@@ -80,6 +80,7 @@ export default function StaffDashBoard() {
             to: '',
             reason: ''
         })
+        setOpen(false)
         }else{
             alert(error)
         }
@@ -91,7 +92,6 @@ export default function StaffDashBoard() {
     // console.log(leaveDetails);
 
     const loginUserLeaves = leaveDetails.filter(leave => leave.signin === signin.id)
-    console.log(loginUserLeaves);
 
     const approveLeave = loginUserLeaves.filter(leave => leave.status === 'approve') || [];
     const rejectLeave = loginUserLeaves.filter(leave => leave.status === 'reject') || [];
@@ -100,7 +100,7 @@ export default function StaffDashBoard() {
         <div>
 
 
-            <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center', gap: '30px' }}>
+            <Box sx={{ display: 'flex', justifyContent: 'center', textAlign: 'center', gap: '30px', mt:'100px'}}>
                 <div >
                     <p>{loginUserLeaves ? loginUserLeaves.length : 0}</p>
                     <Typography>Total Leave</Typography>
@@ -125,7 +125,7 @@ export default function StaffDashBoard() {
                 <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
                     {loginUserLeaves?.map(user => {
                         return <Grid key={user.id} item xs={4}>
-                            <Card sx={{}}>
+                            <Card sx={{boxShadow:'2px 2px 5px'}}>
                                 <CardContent>
                                     <Typography>Leave for {moment(user.from).format('D MMMM, YYYY')} to {moment(user.to).format('D MMMM, YYYY')}</Typography>
 

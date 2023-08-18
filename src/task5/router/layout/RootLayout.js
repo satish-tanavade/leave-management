@@ -3,6 +3,7 @@ import CompNavBar from '../../component/CompNavBar'
 import {Outlet} from 'react-router-dom'
 
 function RootLayout() {
+  
   return (
     <>
         <CompNavBar />

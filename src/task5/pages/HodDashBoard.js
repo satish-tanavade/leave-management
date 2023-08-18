@@ -49,7 +49,7 @@ function HodDashBoard() {
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           {leaveDetails?.map(user => {
             return <Grid key={user.id} item xs={4}>
-              <Card sx={{}}>
+              <Card sx={{backgroundColor:'lightcyan'}}>
                 <CardContent>
                   <Typography>{user.fname} {user.lname}</Typography>
                   {/* <br></br> */}
@@ -66,8 +66,8 @@ function HodDashBoard() {
                 {user.status === 'pending' &&
                   <CardActions>
                     <Grid container justifyContent={'flex-end'}>
-                      <Button size="small" sx={{ backgroundColor: '#FF0000', color: 'white', marginRight: '10px' }} onClick={() => handleReject(user)}>Reject</Button>
-                      <Button size="small" sx={{ backgroundColor: '#008000', color: 'white' }} onClick={() => handleApprove(user)}>Approve</Button>
+                      <Button size="small" sx={{ backgroundColor: '#FF0000', color: 'white', marginRight: '10px', ':hover': {backgroundColor: '#FF0000', color: 'white'} }} onClick={() => handleReject(user)}>Reject</Button>
+                      <Button size="small" sx={{ backgroundColor: '#008000', color: 'white', ':hover': {backgroundColor: '#008000', color: 'white'} }} onClick={() => handleApprove(user)}>Approve</Button>
                     </Grid>
                   </CardActions>}
 

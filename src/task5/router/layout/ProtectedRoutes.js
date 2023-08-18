@@ -2,10 +2,10 @@ import React from 'react'
 import { Navigate } from 'react-router';
 
 function ProtectedRoutes({children, allowedRoles}) {
-    console.log(allowedRoles);
+    // console.log(allowedRoles);
 
     const storedUser = JSON.parse(localStorage.getItem('signin'))
-    console.log(storedUser);
+    // console.log(storedUser);
 
     let auth = {role : storedUser.role}
   return (

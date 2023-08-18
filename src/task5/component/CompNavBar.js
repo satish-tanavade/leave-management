@@ -5,19 +5,24 @@ import { useNavigate } from 'react-router'
 function CompNavBar() {
 
   const navigate = useNavigate()
-  const handleLogout = () =>{
+
+  const loginUser = JSON.parse(localStorage.getItem('signin'))
+  console.log(loginUser);
+  const handleLogout = () => {
     localStorage.removeItem('signin')
     navigate('/')
   }
   return (
     <>
-      <Box sx = {{marginBottom:'65px'}}>
+      <Box sx={{ marginBottom: '65px' }}>
         <AppBar sx={{ background: 'lightpink', position: 'fixed' }}>
           <Toolbar>
             <Typography>Leave Application</Typography>
 
-            <Button onClick={() => navigate('/login')} sx={{ ml: 'auto' }}>Login</Button>
-            <Button onClick={handleLogout}>Logout</Button>
+            {loginUser ? <Button sx={ {ml: 'auto'} } onClick={handleLogout}>Logout</Button> : <Button onClick={() => navigate('/login')} sx={{ ml: 'auto' }}>Login</Button>}
+
+
+
           </Toolbar>
         </AppBar>
       </Box>
